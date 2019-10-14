@@ -2,6 +2,9 @@
 #include "SFML\Graphics.hpp"
 #include "Framework\Input.h"
 
+
+#define GAME_PI 3.14159265f
+
 class MySprite : public sf::RectangleShape
 {
 public:

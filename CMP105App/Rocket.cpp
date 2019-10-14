@@ -2,7 +2,7 @@
 #include "framework/Vector.h"
 #include "Force.h"
 
-#define RAD2DEG (180.0/3.14159)
+#define RAD2DEG (180.0/GAME_PI)
 
 Rocket::Rocket() :
 	cGravity(0, 9.8), //note the axis in the 2D game are positive down and positive right so 9.8 in y is down
