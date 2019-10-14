@@ -65,9 +65,9 @@ void Level::update(float dt)
 	if (play)
 	{
 		cannon.update(dt);
-		std::string xpos = std::to_string(sf::Mouse::getPosition(*window).x);
+		/*std::string xpos = std::to_string(sf::Mouse::getPosition(*window).x);
 		std::string ypos = std::to_string(sf::Mouse::getPosition(*window).y);
-		text.setString("Mouse: " + xpos + ", " + ypos);
+		text.setString("Mouse: " + xpos + ", " + ypos);*/
 	}
 }
 

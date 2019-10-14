@@ -12,16 +12,11 @@ public:
 
 	void update(float dt);  //this gets called by the game once a frame to keep updating and changing the sprite
 	
-	void setRenderWindow(sf::RenderWindow* w) { pWindow = w; }
+	void setRenderWindow(sf::RenderWindow* w);
 	void setText(sf::Text* t) { pText = t; }
 	sf::Vector2f GetUnitVectorFromAngle() const {
-		return { sin(angle), cos(angle) };
+		return {  cos(angle), sin(angle) };
 	}
-	
-	
-
-	
-
 	void Draw();
 protected:
 	void handleInput(float dt);
@@ -37,7 +32,8 @@ protected:
 	float angle; //THIS IS IN RADIANS
 	float VelocityMagnitude;
 
-	
+	float dollySpeed;
+	float velocityIncrementer;
 	//flag to see if the sprite is currently moving
 	bool moving;
 	bool drag;

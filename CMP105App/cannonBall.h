@@ -8,7 +8,9 @@ class cannonBall: public MySprite
 public:
 	cannonBall();
 	~cannonBall();
-
+	void setRenderWindow(sf::RenderWindow* w) {
+		pWindow = w;
+	}
 	void update(float dt);  //this gets called by the game once a frame to keep updating and changing the sprite
 	void Draw();
 	void TurnOn(float VelocityMagnitude, float angleRad, sf::Vector2f startingpos);

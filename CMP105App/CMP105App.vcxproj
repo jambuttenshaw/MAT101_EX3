@@ -193,6 +193,7 @@
     <ClInclude Include="Framework\SoundObject.h" />
     <ClInclude Include="Framework\TileMap.h" />
     <ClInclude Include="Framework\Vector.h" />
+    <ClInclude Include="ToString.h" />
     <ClInclude Include="KinematicSprite.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Line.h" />
