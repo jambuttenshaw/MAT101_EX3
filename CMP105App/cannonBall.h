@@ -3,7 +3,7 @@
 
 
 
-class cannonBall: public MySprite
+class cannonBall: public sf::CircleShape
 {
 public:
 	cannonBall();
@@ -15,14 +15,18 @@ public:
 	void Draw();
 	void TurnOn(float VelocityMagnitude, float angleRad, sf::Vector2f startingpos);
 	bool IsAlive() const { return alive; }
+	float GetAge() const { return age; }
 protected:
 	void TurnOff();
+	void CheckAgeAndOffScreen();
 	
 	
 
 
 
 	sf::Vector2f InitialVelocity;
+	sf::Vector2f stepVelocity;
+	sf::Vector2f startingPosition;
 	float InitVelocityMag;  // The magnitude of the inital velocity the V in our word problems
 	float angleRadians;  //the angle of launch, can be calculated from the vector Inital Velocity
 

@@ -25,6 +25,7 @@ protected:
 	void drawCannonBalls();
 	void drawPrediction();
 	sf::Vector2f  GetPreditionLocation(float t);
+	cannonBall & GetNextAvailableBall();
 	//here we are separating out speed and direction aka velocity
 
 

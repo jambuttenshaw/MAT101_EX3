@@ -83,7 +83,7 @@ void Cannon::updateCannonBalls(float dt)
 {
 	for (int i = 0; i < MAX_CANNON_BALLS; ++i)
 	{
-		if (cannonBalls[i].isAlive())
+		if (cannonBalls[i].IsAlive())
 		{
 			cannonBalls[i].update(dt);
 		}
@@ -127,16 +127,37 @@ sf::Vector2f Cannon::GetPreditionLocation(float t)
 	return getPosition() + pos;
 }
 
+cannonBall & Cannon::GetNextAvailableBall()
+{
+	for (int i = 0; i < MAX_CANNON_BALLS; ++i)
+	{
+		if (!cannonBalls[i].IsAlive())
+		{
+			return cannonBalls[i];
+		}
+	}
+	int oldIndex = 0;
+	for (int i = 1; i < MAX_CANNON_BALLS; ++i)
+	{
+		if (cannonBalls[i].GetAge() > cannonBalls[oldIndex].GetAge())
+		{
+			oldIndex = i;
+		}
+	}
+	return cannonBalls[oldIndex];
+}
+
 
 void Cannon::Draw()
 {
 	
-	pWindow->draw(barrelShape);
-	pWindow->draw(baseShape);
-	pWindow->draw(hingeShape);
+	
 	drawPrediction();
 	//draw all active cannonballs
 	drawCannonBalls();
+	pWindow->draw(barrelShape);
+	pWindow->draw(baseShape);
+	pWindow->draw(hingeShape);
 }
 
 
@@ -163,7 +184,7 @@ void Cannon::handleInput(float dt)
 		move(sf::Vector2f(1, 0)*dollySpeed*dt);
 	}
 	//SPACE for launching a cannon ball
-	if (input->isKeyDown(sf::Keyboard::Space))
+	if (input->isKeyJustDown(sf::Keyboard::Space))
 	{
 		Launch();
 	}
@@ -202,6 +223,10 @@ void Cannon::Launch()
 {
 	//Take the current set up
 	//angle, Velocity, position and use that to grab a ball
+	cannonBall& nextCannonBall = GetNextAvailableBall();
+	nextCannonBall.TurnOn(VelocityMagnitude, angle, getPosition());
+
+	//could do some animation or smoke here fwiw
 }
 
 
