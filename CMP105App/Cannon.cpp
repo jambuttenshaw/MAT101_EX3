@@ -5,7 +5,7 @@
 
 Cannon::Cannon():
 	pWindow(nullptr),
-	VelocityMagnitude(30),
+	VelocityMagnitude(120),
 	angle(-GAME_PI/4.0f), 
 	cGravity(0, 9.8f), //note the axis in the 2D game are positive down and positive right so 9.8 in y is down
 	angularSpeed(GAME_PI/8.0f),
@@ -158,6 +158,8 @@ void Cannon::Draw()
 	pWindow->draw(barrelShape);
 	pWindow->draw(baseShape);
 	pWindow->draw(hingeShape);
+
+	
 }
 
 

@@ -65,12 +65,12 @@ void cannonBall::TurnOn(float VelocityMagnitude, float angleRad, sf::Vector2f st
 {
 	alive = true;
 	age = 0;
-	startingPosition = startingpos;
+	startingPosition = startingpos - sf::Vector2f(getRadius()*0.5f, getRadius()*0.5f);
 	InitVelocityMag = VelocityMagnitude; 
 	angleRadians = angleRad;
 	InitialVelocity = { VelocityMagnitude*cos(angleRadians), VelocityMagnitude*sin(angleRadians) };
 	stepVelocity = InitialVelocity;
-	setPosition(startingpos);
+	setPosition(startingPosition);
 }
 
 void cannonBall::TurnOff()
