@@ -26,7 +26,7 @@ Cannon::Cannon():
 	hingeShape.setFillColor(sf::Color::Blue);
 
 
-	barrelShape.setSize(sf::Vector2f(50, 25));
+	barrelShape.setSize(sf::Vector2f(25, 25));
 	barrelShape.setOrigin(0, barrelShape.getSize().y*0.5f);
 	barrelShape.setRotation(static_cast<float>(angle*RAD2DEG));
 	barrelShape.setPosition(getPosition());
@@ -57,6 +57,7 @@ void Cannon::update(float dt)
 
 	if (pText != nullptr)
 	{
+		//TODO MAT101  ADD IN TEXT TO DISPLAY THE MAX HEIGHT (max height formula + height of launch pt)
 		std::string otext = "Velocity = " + ToString(VelocityMagnitude) + ", angle = " + ToString(angle*RAD2DEG*-1);
 		pText->setString(otext);
 	}

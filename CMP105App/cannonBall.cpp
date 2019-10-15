@@ -6,7 +6,8 @@ cannonBall::cannonBall() :
 	cGravity(0, 9.8), //note the axis in the 2D game are positive down and positive right so 9.8 in y is down
 	cResitanceForceMagnitude(0.0f),
 	pWindow(nullptr), 
-	alive(false)
+	alive(false),
+	mass(5.0f)
 {
 	setRadius(10);
 	setOrigin(getRadius() / 2.0f, getRadius() / 2.0f);
@@ -30,13 +31,18 @@ void cannonBall::update(float dt)
 		
 
 	}
-	age += dt;
-	//Vx = Vcos(angle);  //is a constant velocity b/c no forces acting along the x
+	age += dt; //keep track of how long it has been in flight for reuse of cannonballs
+
+	////////////////////////MATHS 101 CODE HERE/////////////////////////////////////////
+
+	//Vx = Vcos(angle);  //is a constant velocity b/c no forces acting along the x  INFO: cGravity.x = 0
 	//Vy = Vsin(angle) + 1/2(cGravity.y)
+	//gravity is the only force acting on the cannonball  so F = ma    mg = ma  -> g = a  however if there was a resistance force like wind
+	//we would use our F = ma  => mg  - F_resit = ma   to calculate a new acceleration vector which would have both a x and y component
 	//but since we are using vectors we are looking at the horizontal and vertial components of our right triangle (where Vtotal is the hypotonous 
 	//if in terms of vectors just keep coding like we have been where a = 0 in x and a = 9.8 in y  (contained in cGravity constant)  our equation is easy with vectors
 	sf::Vector2f pos = stepVelocity * dt + 0.5f*cGravity*dt*dt; //ut + 1/2at^2
-	stepVelocity += cGravity * dt; // v = u + at
+	stepVelocity += cGravity * dt; // v = u + at  note the += is not =
 	setPosition(getPosition() + pos);
 
 
