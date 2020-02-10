@@ -9,13 +9,15 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	// initialise game objects
 	play = true;
 
-	
+	sf::Vector2f GAME_GRAVITY = { 0, 0 };
+
+	cannon.SetGravity(GAME_GRAVITY);
 	cannon.setInput(in);
 	cannon.setRenderWindow(hwnd);
 	cannon.setSize(sf::Vector2f(100, 100));
 	cannon.setOrigin(cannon.getSize().x/2.0f, cannon.getSize().y/2.0f);
 	cannon.setRotation(0);
-	cannon.setPosition(300, 300);
+	cannon.setPosition(100, 600);
 	cannon.setText(&text);
 
 	if (!font.loadFromFile("font/arial.ttf"))

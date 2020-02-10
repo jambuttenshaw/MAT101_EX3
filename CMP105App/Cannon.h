@@ -18,6 +18,7 @@ public:
 		return {  cos(angle), sin(angle) };
 	}
 	void Draw();
+	void SetGravity(const sf::Vector2f& _gravity);
 protected:
 	void handleInput(float dt);
 	void updateCannonBalls(float dt);
@@ -29,7 +30,7 @@ protected:
 	//here we are separating out speed and direction aka velocity
 
 
-	const sf::Vector2f cGravity;
+	 sf::Vector2f cGravity;
 	float angle; //THIS IS IN RADIANS
 	float VelocityMagnitude;
 

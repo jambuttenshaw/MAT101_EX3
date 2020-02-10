@@ -16,6 +16,7 @@ public:
 	void TurnOn(float VelocityMagnitude, float angleRad, sf::Vector2f startingpos);
 	bool IsAlive() const { return alive; }
 	float GetAge() const { return age; }
+	void SetGravity(const sf::Vector2f& _gravity) { cGravity = _gravity; }
 protected:
 	void TurnOff();
 	void CheckAgeAndOffScreen();
@@ -34,7 +35,7 @@ protected:
 	float speed;
 	sf::Vector2f direction;
 
-	const sf::Vector2f cGravity;
+	sf::Vector2f cGravity;
 	const float cResitanceForceMagnitude;
 	float mass;
 

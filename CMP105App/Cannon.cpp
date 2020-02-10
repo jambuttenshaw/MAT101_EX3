@@ -45,12 +45,22 @@ Cannon::Cannon():
 }
 
 
+void Cannon::SetGravity(const sf::Vector2f& _gravity)
+{
+	for (int i = 0; i < MAX_CANNON_BALLS; ++i)
+	{
+		cannonBalls[i].SetGravity(_gravity);
+	}
+	cGravity = _gravity;
+}
+
+
 void Cannon::update(float dt)
 {
 	handleInput(dt);
 	updateCannonBalls(dt);
 
-
+	VelocityMagnitude = 150.0f;
 
 
 
@@ -201,14 +211,14 @@ void Cannon::handleInput(float dt)
 		//subtract to the angle clockwise
 		angle -= angularSpeed * dt;
 	}
-	if (input->isKeyDown(sf::Keyboard::Up))
-	{
-		VelocityMagnitude += velocityIncrementer * dt; 
-	}
-	if (input->isKeyDown(sf::Keyboard::Down))
-	{
-		VelocityMagnitude -= velocityIncrementer * dt;
-	}
+	//if (input->isKeyDown(sf::Keyboard::Up))
+	//{
+	//	VelocityMagnitude += velocityIncrementer * dt; 
+	//}
+	//if (input->isKeyDown(sf::Keyboard::Down))
+	//{
+	//	VelocityMagnitude -= velocityIncrementer * dt;
+	//}
 
 	if (angle > 0)
 	{

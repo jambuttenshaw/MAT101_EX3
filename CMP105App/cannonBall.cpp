@@ -34,7 +34,7 @@ void cannonBall::update(float dt)
 	age += dt; //keep track of how long it has been in flight for reuse of cannonballs
 
 	////////////////////////MATHS 101 CODE HERE/////////////////////////////////////////
-
+	
 	//Vx = Vcos(angle);  //is a constant velocity b/c no forces acting along the x  INFO: cGravity.x = 0
 	//Vy = Vsin(angle) + 1/2(cGravity.y)
 	//gravity is the only force acting on the cannonball  so F = ma    mg = ma  -> g = a  however if there was a resistance force like wind
@@ -43,6 +43,10 @@ void cannonBall::update(float dt)
 	//if in terms of vectors just keep coding like we have been where a = 0 in x and a = 9.8 in y  (contained in cGravity constant)  our equation is easy with vectors
 	sf::Vector2f pos = stepVelocity * dt + 0.5f*cGravity*dt*dt; //ut + 1/2at^2
 	stepVelocity += cGravity * dt; // v = u + at  note the += is not =
+
+
+
+
 	setPosition(getPosition() + pos);
 
 
