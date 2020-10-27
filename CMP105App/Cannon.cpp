@@ -51,14 +51,19 @@ void Cannon::update(float dt)
 	updateCannonBalls(dt);
 
 
+	// Calculate greatest height
+	// Ymax = (V * V) * (sin(angle) * sin(angle)) / (2 * g)
+	float sinAngle = sin(angle);
+	float YMax = (VelocityMagnitude * VelocityMagnitude * sinAngle * sinAngle) / (2 * cGravity.y);
 
-
-
+	// cannon height from bottom = screen height - cannon position
+	float cannonHeight = pWindow->getSize().y - getPosition().y;
+	float maxHeight = cannonHeight + YMax;
 
 	if (pText != nullptr)
 	{
 		//TODO MAT101  ADD IN TEXT TO DISPLAY THE MAX HEIGHT (max height formula + height of launch pt)
-		std::string otext = "Velocity = " + ToString(VelocityMagnitude) + ", angle = " + ToString(angle*RAD2DEG*-1);
+		std::string otext = "Velocity = " + ToString(VelocityMagnitude) + ", angle = " + ToString(angle*RAD2DEG*-1) + ", Max Height = " + ToString(maxHeight);
 		pText->setString(otext);
 	}
 	//Update the subcomponents, only a few so do here if many parameterize and put into a method/function

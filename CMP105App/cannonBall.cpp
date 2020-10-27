@@ -41,15 +41,25 @@ void cannonBall::update(float dt)
 	//we would use our F = ma  => mg  - F_resit = ma   to calculate a new acceleration vector which would have both a x and y component
 	//but since we are using vectors we are looking at the horizontal and vertial components of our right triangle (where Vtotal is the hypotonous 
 	//if in terms of vectors just keep coding like we have been where a = 0 in x and a = 9.8 in y  (contained in cGravity constant)  our equation is easy with vectors
-	sf::Vector2f pos = stepVelocity * dt + 0.5f*cGravity*dt*dt; //ut + 1/2at^2
-	stepVelocity += cGravity * dt; // v = u + at  note the += is not =
-	setPosition(getPosition() + pos);
+	// sf::Vector2f pos = stepVelocity * dt + 0.5f*cGravity*dt*dt; //ut + 1/2at^2
+	// stepVelocity += cGravity * dt; // v = u + at  note the += is not =
+	// setPosition(getPosition() + pos);
 
 
 	////alternatively use t instead of dt, where t is time since launch aka age
 	//float t = age;
 	//sf::Vector2f pos = InitialVelocity * t + 0.5f*cGravity*t*t;
 	//setPosition(startingPosition + pos);
+
+
+	// a resistance force proportional to velocity
+	sf::Vector2f resistance = stepVelocity * 0.2f;
+
+	// a = g - R / m
+	sf::Vector2f acceleration = cGravity - (resistance / mass);
+	sf::Vector2f deltaPos = stepVelocity * dt + 0.5f * acceleration * dt * dt;
+	stepVelocity += acceleration * dt;
+	setPosition(getPosition() + deltaPos);
 
 
 	CheckAgeAndOffScreen();
